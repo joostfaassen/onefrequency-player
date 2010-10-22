@@ -1,0 +1,125 @@
+<html xmanifest="cache-manifest.php">
+	<head>
+		<title>One Frequency Player</title>
+		<link rel="stylesheet" href="static/style.css" type="text/css" media="screen" />
+		
+		<link type="text/css" href="css/ui-lightness/jquery-ui-1.8.5.custom.css" rel="Stylesheet" />	
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.3/jquery.min.js"></script>
+		<script type="text/javascript" src="js/jquery-ui-1.8.5.custom.min.js"></script>
+		
+		
+		<script type="text/javascript" src="static/unitine.console.js"></script>
+		<script type="text/javascript" src="static/onefrequency.player.js"></script>
+		<script type="text/javascript" src="static/datatemplate.js"></script>
+		
+		<script type="text/javascript">
+		$(function() {
+			//alert("tabzzz");
+			$("#tabs").tabs();
+		});
+		</script>	
+	</head>
+<body id="body">
+
+<div class="all">
+	<div class="header">
+		<h1 style="background: #ffffff; height: 30px;">One Frequency Player</h1>
+	</div>
+	<div class="content">
+<div id="edit-dialog" title="Edit slot" style="display: none;">
+
+	<div class="ui-widget">
+		<div style="margin-top: 10px; padding: 0 .7em;" class="ui-state-highlight ui-corner-all"> 
+			<p><span style="float: left; margin-right: .3em;" class="ui-icon ui-icon-info"></span>
+			Use this window to configure the selected track-slot.</p>
+		</div>
+	</div>
+	<br />
+	<div class="widget">
+		<label>Index</label>
+		<input readonly="readonly" id="slot-index" />
+	</div>
+<!-- 
+	<div class="widget">
+		<label>Title</label>
+		<input id="slot-title" />
+	</div>
+ -->
+	<div class="widget">
+		<label>Track</label>
+		<select id="slot-track">
+		</select>
+	</div>
+	<div class="widget">
+		<label>Volume</label>
+		<input id="slot-volume" />
+	</div>
+	
+	<button id="slot-save">Save</button>
+</div>
+
+
+<div id="tabs">
+	<ul>
+		<li><a href="#tabs-1">Slots</a></li>
+		<li><a href="#tabs-2">Track library</a></li>
+		<li><a href="#tabs-3">Settings</a></li>
+	</ul>
+	<div id="tabs-1">
+		<h2>Slots</h2>
+		<ul id="slots">
+		</ul>
+	</div>
+	<div id="tabs-2">
+		<h2>Tracks</h2>
+		<ul id="tracklist">
+		</ul>
+
+		<h2>Upload track</h2>
+
+		<form method="post" action="./upload-track.php?go" enctype="multipart/form-data">
+			<input style="width: 100px;" type="file" name="addfile" id="addfile" /><br />
+			<button type="submit">Upload</button>
+		</form>
+		<!-- 
+		<input type="text" id="addbox" />
+		<button onclick="onefrequency.player.AddTrack($('#addbox').get(0).value)">Add</button>
+		 -->
+
+	</div>
+	<div id="tabs-3">
+		Not much here yet...
+	</div>
+</div>
+	</div>
+	<div class="sidebar">
+		<h2>Controls</h2>
+		<div class="controls">
+		<button onclick="onefrequency.player.Play()">Play</button>
+		<button onclick="onefrequency.player.Stop()">Stop</button>
+		<button onclick="onefrequency.player.LoadTrackList()">Reload TrackList</button>
+		
+		<button onclick="onefrequency.player.FadeIn()">Fade in (shift+i)</button>
+		<button onclick="onefrequency.player.FadeOut()">Fade out (shift+o)</button>
+		<button onclick="onefrequency.player.VolumeUp()">Volume up</button>
+		<button onclick="onefrequency.player.VolumeDown()">Volume down</button>
+		</div> 
+		<br />
+		Master volume:<br />
+		<div style="border: 1px solid #000000; width:200px; height: 20px; background-color: #008000"> 
+		<div id="mastervolume" style="height: 100%; background-color: #00ff00"></div>
+		</div>
+		<br />
+		
+		
+		<audio id="player" src="music/Track 1_work alone_Einaudi-Ancora.ogg" controls="controls" >
+		Your browser does not support the audio element.
+		</audio>
+		
+		<div id="console">Console window</div>
+		
+	</div>
+</div>
+
+</body>
+</html>
